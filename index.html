@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SleepCycle Mate</title>
+    
+    <!-- Meta tags for PWA/Mobile experience -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2909/2909937.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- React & ReactDOM -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    
+    <!-- Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap');
+        
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+            color: #e2e8f0; /* Slate 200 */
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Custom Scrollbar hide */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Smooth fade in */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // --- Icons (Inline SVG for reliability) ---
+        const MoonIcon = ({ className }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        );
+        const SunIcon = ({ className }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        );
+        const BedIcon = ({ className }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
+        );
+        const ClockIcon = ({ className }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        );
+
+        // --- Logic & Helpers ---
+        const SLEEP_CYCLE = 90; // minutes
+        const FALL_ASLEEP_TIME = 15; // minutes
+
+        const formatTime = (date) => {
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+        };
+
+        const addMinutes = (date, minutes) => {
+            return new Date(date.getTime() + minutes * 60000);
+        };
+
+        // --- Main Component ---
+        const App = () => {
+            const [mode, setMode] = useState('wakeup'); // 'wakeup' (I want to wake at...) or 'bedtime' (I'm sleeping at...)
+            const [inputTime, setInputTime] = useState(formatTime(new Date()));
+            const [results, setResults] = useState([]);
+            const [showResults, setShowResults] = useState(false);
+
+            // Update time automatically if in "Sleep Now" mode and not showing results yet
+            useEffect(() => {
+                if (mode === 'bedtime' && !showResults) {
+                    const timer = setInterval(() => {
+                        setInputTime(formatTime(new Date()));
+                    }, 1000 * 60);
+                    return () => clearInterval(timer);
+                }
+            }, [mode, showResults]);
+
+            const calculateTimes = () => {
+                const now = new Date();
+                const [hours, minutes] = inputTime.split(':').map(Number);
+                let baseTime = new Date();
+                baseTime.setHours(hours);
+                baseTime.setMinutes(minutes);
+                baseTime.setSeconds(0);
+
+                // If calculating for tomorrow morning (if time passed)
+                if (mode === 'wakeup' && baseTime < now) {
+                    baseTime.setDate(baseTime.getDate() + 1);
+                }
+
+                let cycles = [];
+                // We calculate 4, 5, 6 cycles (6h, 7.5h, 9h)
+                // Cycle counts usually recommend: 5-6 cycles for adults
+                const cycleCounts = [6, 5, 4, 3]; 
+
+                cycleCounts.forEach(cycleCount => {
+                    let calculatedTime;
+                    let duration;
+
+                    if (mode === 'bedtime') {
+                        // If I sleep NOW (or at input time), when to wake?
+                        // Wake Time = Bed Time + Fall Asleep + (Cycle * 90)
+                        duration = FALL_ASLEEP_TIME + (cycleCount * SLEEP_CYCLE);
+                        calculatedTime = addMinutes(baseTime, duration);
+                    } else {
+                        // If I want to wake at X, when to sleep?
+                        // Sleep Time = Wake Time - (Cycle * 90) - Fall Asleep
+                        duration = (cycleCount * SLEEP_CYCLE) + FALL_ASLEEP_TIME;
+                        calculatedTime = addMinutes(baseTime, -duration);
+                    }
+
+                    cycles.push({
+                        cycles: cycleCount,
+                        time: formatTime(calculatedTime),
+                        fullDate: calculatedTime,
+                        hoursDetails: (cycleCount * 1.5).toFixed(1) // 90min = 1.5hr
+                    });
+                });
+
+                // Sort by time
+                cycles.sort((a, b) => a.fullDate - b.fullDate);
+                setResults(cycles);
+                setShowResults(true);
+            };
+
+            const reset = () => {
+                setShowResults(false);
+                if (mode === 'bedtime') setInputTime(formatTime(new Date()));
+            };
+
+            return (
+                <div className="min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden">
+                    {/* Background decorations */}
+                    <div className="absolute top-[-10%] left-[-10%] w-64 h-64 bg-indigo-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+                    <div className="absolute top-[-10%] right-[-10%] w-64 h-64 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+                    <div className="absolute bottom-[-20%] left-[20%] w-64 h-64 bg-pink-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+
+                    <div className="z-10 w-full max-w-md bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-3xl shadow-2xl p-6 sm:p-8 transition-all duration-300">
+                        
+                        {/* Header */}
+                        <div className="text-center mb-8">
+                            <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-300 to-purple-300 bg-clip-text text-transparent flex items-center justify-center gap-2">
+                                <MoonIcon className="text-indigo-300" /> SleepCycle
+                            </h1>
+                            <p className="text-slate-400 text-sm mt-2 font-light">
+                                คำนวณเวลาตื่นและนอน ตามหลักวิทยาศาสตร์
+                            </p>
+                        </div>
+
+                        {!showResults ? (
+                            <div className="space-y-6 fade-in">
+                                {/* Mode Toggle */}
+                                <div className="grid grid-cols-2 gap-2 bg-slate-900/50 p-1.5 rounded-2xl">
+                                    <button 
+                                        onClick={() => setMode('wakeup')}
+                                        className={`py-3 px-4 rounded-xl text-sm font-medium transition-all duration-200 flex items-center justify-center gap-2
+                                            ${mode === 'wakeup' ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-400 hover:text-slate-200'}`}
+                                    >
+                                        <ClockIcon size={18} /> จะตื่นกี่โมง
+                                    </button>
+                                    <button 
+                                        onClick={() => { setMode('bedtime'); setInputTime(formatTime(new Date())); }}
+                                        className={`py-3 px-4 rounded-xl text-sm font-medium transition-all duration-200 flex items-center justify-center gap-2
+                                            ${mode === 'bedtime' ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-400 hover:text-slate-200'}`}
+                                    >
+                                        <BedIcon size={18} /> จะนอนตอนนี้
+                                    </button>
+                                </div>
+
+                                {/* Input Area */}
+                                <div className="text-center py-6">
+                                    <label className="block text-slate-400 text-sm mb-2 font-light">
+                                        {mode === 'wakeup' ? 'ฉันต้องการตื่นนอนเวลา' : 'ฉันจะเข้านอนเวลา'}
+                                    </label>
+                                    <div className="relative inline-block">
+                                        <input 
+                                            type="time" 
+                                            value={inputTime}
+                                            onChange={(e) => setInputTime(e.target.value)}
+                                            className="bg-transparent text-5xl font-bold text-white text-center border-b-2 border-slate-600 focus:border-indigo-500 outline-none pb-2 w-full font-mono appearance-none"
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Calculate Button */}
+                                <button 
+                                    onClick={calculateTimes}
+                                    className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold py-4 rounded-2xl shadow-lg transform active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 text-lg"
+                                >
+                                    คำนวณเวลานอน
+                                </button>
+                                
+                                {mode === 'bedtime' && (
+                                    <p className="text-center text-xs text-slate-500 mt-2">
+                                        *รวมเวลาเฉลี่ย 15 นาที เพื่อให้ผล็อยหลับ
+                                    </p>
+                                )}
+                            </div>
+                        ) : (
+                            <div className="space-y-4 fade-in">
+                                <div className="text-center mb-6">
+                                    <p className="text-slate-400 text-sm">
+                                        {mode === 'bedtime' ? 'เพื่อให้ตื่นมาสดชื่น คุณควรตั้งนาฬิกาปลุกเวลา:' : 'เพื่อให้ตื่นเวลานี้ คุณควรเข้านอนเวลา:'}
+                                    </p>
+                                </div>
+
+                                <div className="space-y-3">
+                                    {results.map((item, index) => {
+                                        // Highlight logic: 5 or 6 cycles are best
+                                        const isBest = item.cycles === 5 || item.cycles === 6;
+                                        const isGood = item.cycles === 4;
+                                        
+                                        return (
+                                            <div 
+                                                key={index} 
+                                                className={`flex items-center justify-between p-4 rounded-2xl border transition-all duration-300
+                                                    ${isBest ? 'bg-indigo-900/40 border-indigo-500/50 shadow-[0_0_15px_rgba(99,102,241,0.2)]' : 
+                                                      isGood ? 'bg-slate-800/40 border-slate-600/50' : 'bg-slate-800/20 border-slate-700/30 opacity-70'}
+                                                `}
+                                            >
+                                                <div>
+                                                    <span className={`text-2xl font-bold font-mono ${isBest ? 'text-indigo-300' : 'text-slate-300'}`}>
+                                                        {item.time}
+                                                    </span>
+                                                    <div className="text-xs text-slate-400 mt-1">
+                                                        {item.cycles} รอบ ({item.hoursDetails} ชม.)
+                                                    </div>
+                                                </div>
+                                                
+                                                {isBest && (
+                                                    <span className="px-3 py-1 bg-indigo-500/20 text-indigo-200 text-xs font-medium rounded-full border border-indigo-500/30">
+                                                        แนะนำ
+                                                    </span>
+                                                )}
+                                                {isGood && (
+                                                    <span className="px-3 py-1 bg-slate-600/20 text-slate-300 text-xs font-medium rounded-full border border-slate-500/30">
+                                                        พอใช้
+                                                    </span>
+                                                )}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+
+                                <button 
+                                    onClick={reset}
+                                    className="w-full mt-6 bg-slate-700 hover:bg-slate-600 text-white font-medium py-3 rounded-xl transition-all"
+                                >
+                                    คำนวณใหม่
+                                </button>
+
+                                <div className="bg-slate-900/50 rounded-xl p-4 mt-4 border border-slate-700/50">
+                                    <div className="flex gap-3">
+                                        <div className="bg-indigo-500/10 p-2 rounded-lg h-fit">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-400"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                        </div>
+                                        <div>
+                                            <h4 className="text-indigo-300 text-sm font-medium mb-1">คำแนะนำจากหมอ</h4>
+                                            <p className="text-xs text-slate-400 leading-relaxed">
+                                                การตื่นระหว่างรอบการนอน (Sleep Cycle) จะทำให้รู้สึกเพลีย (Sleep Inertia) ควรตั้งปลุกในช่วงเวลาที่แนะนำ และอย่าลืมงดหน้าจอก่อนนอน 30 นาทีนะครับ
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                    </div>
+                    
+                    <footer className="mt-8 text-center text-slate-600 text-xs font-light">
+                        Designed for Healthy Sleep Habits
+                    </footer>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
