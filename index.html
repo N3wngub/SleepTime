@@ -11,13 +11,12 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#0f172a">
     
-    <!-- Custom SVG Icon (Embedded Data URI for Permanence & Sharpness) -->
-    <!-- Design: Gradient Circle + Moon + Clock Hands + Wave Graph -->
-    <link rel="icon" type="image/svg+xml" href='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImdyYWQxIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojM2IxNWU2O3N0b3Atb3BhY2l0eToxIiAvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzQzMzhjYTtzdG9wLW9wYWNpdHk6MSIgLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48Y2lyY2xlIGN4PSIyNTYiIGN5PSIyNTYiIHI9IjI1NiIgZmlsbD0idXJsKCNncmFkMSkiIC8+PCEtLSBNb29uIC0tPjxwYXRoIGQ9Ik0zNjAgMjU2YzAgODguMzctNzEuNjMgMTYwLTE2MCAxNjAtNDcuNDMgMC05MC4wNS0yMC44LTEyMC4yNC01My44QzEwNC4zNCAzOTYuMjUgMTM2LjA2IDQxNiAxNzIgNDE2YzQ5LjcxIDAgOTAtNDAuMjkgOTAtOTBzLTQwLjI5LTkwLTkwLTkwYy0zNS45NCAwLTY3LjY2IDE5Ljc1LTg0LjI0IDQ5LjhDMTIwLjIxIDE0Mi4xIDE2MS41NCAxMTIgMjA4IDExMmM4OC4zNyAwIDE1MiA2NC40NyAxNTIgMTQ0eiIgZmlsbD0iI2ZmZiIvPjwhLS0gQ2xvY2sgRmFjZSBIaW50IC0tPjxjaXJjbGUgY3g9IjI5MCIgY3k9IjI1MCIgcj0iNjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjMpIiBzdHJva2Utd2lkdGg9IjgiIC8+PHBhdGggZD0iTTI5MCAyNTBWMjE1IiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC42KSIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJNMjkwIDI1MEwzMjAgMjcwIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC42KSIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48IS0tIFdhdmUgR3JhcGggLS0+PHBhdGggZD0iTTEyMCAzNTBDMTUwIDM1MCAxNjAgMzEwIDE5MCAzMTBDMjIwIDMxMCAyMzAgMzcwIDI2MCAzNzBDMjkwIDM3MCAzMDAgMzMwIDMzMCAzMzAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzcxZTJmMyIgc3Ryb2tlLXdpZHRoPSIxMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiAvPjwvc3ZnPg=='>
-    <link rel="apple-touch-icon" href='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImdyYWQxIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojM2IxNWU2O3N0b3Atb3BhY2l0eToxIiAvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzQzMzhjYTtzdG9wLW9wYWNpdHk6MSIgLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48Y2lyY2xlIGN4PSIyNTYiIGN5PSIyNTYiIHI9IjI1NiIgZmlsbD0idXJsKCNncmFkMSkiIC8+PCEtLSBNb29uIC0tPjxwYXRoIGQ9Ik0zNjAgMjU2YzAgODguMzctNzEuNjMgMTYwLTE2MCAxNjAtNDcuNDMgMC05MC4wNS0yMC44LTEyMC4yNC01My44QzEwNC4zNCAzOTYuMjUgMTM2LjA2IDQxNiAxNzIgNDE2YzQ5LjcxIDAgOTAtNDAuMjkgOTAtOTBzLTQwLjI5LTkwLTkwLTkwYy0zNS45NCAwLTY3LjY2IDE5Ljc1LTg0LjI0IDQ5LjhDMTIwLjIxIDE0Mi4xIDE2MS41NCAxMTIgMjA4IDExMmM4OC4zNyAwIDE1MiA2NC40NyAxNTIgMTQ0eiIgZmlsbD0iI2ZmZiIvPjwhLS0gQ2xvY2sgRmFjZSBIaW50IC0tPjxjaXJjbGUgY3g9IjI5MCIgY3k9IjI1MCIgcj0iNjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjMpIiBzdHJva2Utd2lkdGg9IjgiIC8+PHBhdGggZD0iTTI5MCAyNTBWMjE1IiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC42KSIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJNMjkwIDI1MEwzMjAgMjcwIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC42KSIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48IS0tIFdhdmUgR3JhcGggLS0+PHBhdGggZD0iTTEyMCAzNTBDMTUwIDM1MCAxNjAgMzEwIDE5MCAzMTBDMjIwIDMxMCAyMzAgMzcwIDI2MCAzNzBDMjkwIDM3MCAzMDAgMzMwIDMzMCAzMzAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzcxZTJmMyIgc3Ryb2tlLXdpZHRoPSIxMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiAvPjwvc3ZnPg=='>
+    <!-- Custom SVG Icon: Neon Wave (Recreated from reference) -->
+    <link rel="icon" type="image/svg+xml" href='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+PHN0b3Agb2ZZnNldD0iMCUiIHN0b3AtY29sb3I9IiMxZTIxMmYiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwZjE3MmEiLz48L2xpbmVhckdyYWRpZW50PjxmaWx0ZXIgaWQ9Imdsb3ciIHg9Ii01MCUiIHk9Ii01MCUiIHdpZHRoPSIyMDAlIiBoZWlnaHQ9IjIwMCUiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjE1IiByZXN1bHQ9ImNvbG9yZWRCbHVyIi8+PGZlTWVyZ2U+PGZlTWVyZ2VOb2RlIGluPSJjb2xvcmVkQmx1ciIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT48L2ZpbHRlcj48L2RlZnM+PHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMjgiIGZpbGw9InVybCgjYmcpIi8+PGNpcmNsZSBjeD0iMjU2IiBjeT0iMjU2IiByPSIxODAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzMzNDE1NSIgc3Ryb2tlLXdpZHRoPSIxMiIgb3BhY2l0eT0iMC41Ii8+PHBhdGggZD0iTTEzNiAyNTYgQyAxMzYgMjU2LCAxOTYgMTQ2LCAyNTYgMjU2IEMgMzE2IDM2NiwgMzc2IDI1NiwgMzc2IDI1NiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDM2MWVlIiBzdHJva2Utd2lkdGg9IjI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGZpbHRlcj0idXJsKCNnbG93KSIgb3BhY2l0eT0iMC42Ii8+PHBhdGggZD0iTTEzNiAyNTYgQyAxMzYgMjU2LCAxOTYgMTQ2LCAyNTYgMjU2IEMgMzE2IDM2NiwgMzc2IDI1NiwgMzc2IDI1NiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjODE4Y2Y4IiBzdHJva2Utd2lkdGg9IjEwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4='>
+    <link rel="apple-touch-icon" href='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+PHN0b3Agb2ZZnNldD0iMCUiIHN0b3AtY29sb3I9IiMxZTIxMmYiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwZjE3MmEiLz48L2xpbmVhckdyYWRpZW50PjxmaWx0ZXIgaWQ9Imdsb3ciIHg9Ii01MCUiIHk9Ii01MCUiIHdpZHRoPSIyMDAlIiBoZWlnaHQ9IjIwMCUiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjE1IiByZXN1bHQ9ImNvbG9yZWRCbHVyIi8+PGZlTWVyZ2U+PGZlTWVyZ2VOb2RlIGluPSJjb2xvcmVkQmx1ciIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT48L2ZpbHRlcj48L2RlZnM+PHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMjgiIGZpbGw9InVybCgjYmcpIi8+PGNpcmNsZSBjeD0iMjU2IiBjeT0iMjU2IiByPSIxODAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzMzNDE1NSIgc3Ryb2tlLXdpZHRoPSIxMiIgb3BhY2l0eT0iMC41Ii8+PHBhdGggZD0iTTEzNiAyNTYgQyAxMzYgMjU2LCAxOTYgMTQ2LCAyNTYgMjU2IEMgMzE2IDM2NiwgMzc2IDI1NiwgMzc2IDI1NiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDM2MWVlIiBzdHJva2Utd2lkdGg9IjI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGZpbHRlcj0idXJsKCNnbG93KSIgb3BhY2l0eT0iMC42Ii8+PHBhdGggZD0iTTEzNiAyNTYgQyAxMzYgMjU2LCAxOTYgMTQ2LCAyNTYgMjU2IEMgMzE2IDM2NiwgMzc2IDI1NiwgMzc2IDI1NiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjODE4Y2Y4IiBzdHJva2Utd2lkdGg9IjEwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4='>
 
     <!-- Web App Manifest -->
-    <link rel="manifest" href='data:application/manifest+json,{"name": "SleepCycle Mate", "short_name": "SleepCycle", "start_url": ".", "display": "standalone", "background_color": "#0f172a", "theme_color": "#0f172a", "icons": [{"src": "https://cdn-icons-png.flaticon.com/512/1823/1823324.png", "sizes": "512x512", "type": "image/png"}]}'>
+    <link rel="manifest" href='data:application/manifest+json,{"name": "SleepCycle Mate", "short_name": "SleepCycle", "start_url": ".", "display": "standalone", "background_color": "#0f172a", "theme_color": "#0f172a", "icons": [{"src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+PHN0b3Agb2ZZnNldD0iMCUiIHN0b3AtY29sb3I9IiMxZTIxMmYiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwZjE3MmEiLz48L2xpbmVhckdyYWRpZW50PjxmaWx0ZXIgaWQ9Imdsb3ciIHg9Ii01MCUiIHk9Ii01MCUiIHdpZHRoPSIyMDAlIiBoZWlnaHQ9IjIwMCUiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjE1IiByZXN1bHQ9ImNvbG9yZWRCbHVyIi8+PGZlTWVyZ2U+PGZlTWVyZ2VOb2RlIGluPSJjb2xvcmVkQmx1ciIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT48L2ZpbHRlcj48L2RlZnM+PHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMjgiIGZpbGw9InVybCgjYmcpIi8+PGNpcmNsZSBjeD0iMjU2IiBjeT0iMjU2IiByPSIxODAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzMzNDE1NSIgc3Ryb2tlLXdpZHRoPSIxMiIgb3BhY2l0eT0iMC41Ii8+PHBhdGggZD0iTTEzNiAyNTYgQyAxMzYgMjU2LCAxOTYgMTQ2LCAyNTYgMjU2IEMgMzE2IDM2NiwgMzc2IDI1NiwgMzc2IDI1NiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDM2MWVlIiBzdHJva2Utd2lkdGg9IjI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGZpbHRlcj0idXJsKCNnbG93KSIgb3BhY2l0eT0iMC42Ii8+PHBhdGggZD0iTTEzNiAyNTYgQyAxMzYgMjU2LCAxOTYgMTQ2LCAyNTYgMjU2IEMgMzE2IDM2NiwgMzc2IDI1NiwgMzc2IDI1NiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjODE4Y2Y4IiBzdHJva2Utd2lkdGg9IjEwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=", "sizes": "512x512", "type": "image/svg+xml"}]}'>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -228,7 +227,6 @@
                         </div>
 
                         {/* Content Switcher Container */}
-                        {/* Fix: Removed 'absolute inset-0' on children to allow container to grow naturally */}
                         <div className="w-full relative transition-height duration-500 ease-in-out">
                             
                             {/* Input View */}
@@ -236,7 +234,7 @@
                                 ${view === 'input' ? 'relative opacity-100 translate-x-0 scale-100' : 'absolute top-0 left-0 opacity-0 -translate-x-full pointer-events-none scale-95'}`}>
                                 
                                 {/* Toggle Tabs */}
-                                <div className="grid grid-cols-2 gap-2 bg-slate-900/40 p-1.5 rounded-2xl mb-8 border border-slate-700/30">
+                                <div className="grid grid-cols-2 gap-2 bg-slate-900/40 p-1.5 rounded-2xl mb-10 border border-slate-700/30">
                                     <button 
                                         onClick={() => setMode('wakeup')}
                                         className={`py-3 px-2 sm:px-4 rounded-xl text-sm font-medium smooth-transition flex items-center justify-center gap-2
@@ -254,12 +252,11 @@
                                 </div>
 
                                 {/* Time Input */}
-                                <div className="text-center mb-8">
+                                <div className="text-center mb-10">
                                     <label className="block text-slate-400 text-sm mb-4 font-light tracking-wide">
                                         {mode === 'wakeup' ? 'ตั้งเวลาที่ต้องการตื่น' : 'เวลาที่จะเริ่มเข้านอน'}
                                     </label>
                                     <div className="relative inline-block group w-full">
-                                        {/* Input Sizing Fix: Reduced size on mobile (text-5xl) and ensured width constraint */}
                                         <input 
                                             type="time" 
                                             value={inputTime}
@@ -274,7 +271,7 @@
                                 {/* Main Action Button */}
                                 <button 
                                     onClick={calculateTimes}
-                                    className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold py-4 rounded-2xl shadow-lg shadow-indigo-500/20 transform active:scale-95 smooth-transition flex items-center justify-center gap-2 text-lg group mt-4"
+                                    className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold py-4 rounded-2xl shadow-lg shadow-indigo-500/20 transform active:scale-95 smooth-transition flex items-center justify-center gap-2 text-lg group mt-4 mb-2"
                                 >
                                     <span>คำนวณเวลา</span>
                                     <span className="group-hover:translate-x-1 transition-transform">→</span>
