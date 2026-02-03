@@ -11,10 +11,11 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#0f172a">
     
-    <!-- App Icons: Minimal Crescent Moon (White on Dark logic handles by OS mostly, but here using a clean PNG) -->
-    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/1823/1823324.png">
-    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/1823/1823324.png">
-    
+    <!-- Custom SVG Icon (Embedded Data URI for Permanence & Sharpness) -->
+    <!-- Design: Gradient Circle + Moon + Clock Hands + Wave Graph -->
+    <link rel="icon" type="image/svg+xml" href='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImdyYWQxIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojM2IxNWU2O3N0b3Atb3BhY2l0eToxIiAvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzQzMzhjYTtzdG9wLW9wYWNpdHk6MSIgLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48Y2lyY2xlIGN4PSIyNTYiIGN5PSIyNTYiIHI9IjI1NiIgZmlsbD0idXJsKCNncmFkMSkiIC8+PCEtLSBNb29uIC0tPjxwYXRoIGQ9Ik0zNjAgMjU2YzAgODguMzctNzEuNjMgMTYwLTE2MCAxNjAtNDcuNDMgMC05MC4wNS0yMC44LTEyMC4yNC01My44QzEwNC4zNCAzOTYuMjUgMTM2LjA2IDQxNiAxNzIgNDE2YzQ5LjcxIDAgOTAtNDAuMjkgOTAtOTBzLTQwLjI5LTkwLTkwLTkwYy0zNS45NCAwLTY3LjY2IDE5Ljc1LTg0LjI0IDQ5LjhDMTIwLjIxIDE0Mi4xIDE2MS41NCAxMTIgMjA4IDExMmM4OC4zNyAwIDE1MiA2NC40NyAxNTIgMTQ0eiIgZmlsbD0iI2ZmZiIvPjwhLS0gQ2xvY2sgRmFjZSBIaW50IC0tPjxjaXJjbGUgY3g9IjI5MCIgY3k9IjI1MCIgcj0iNjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjMpIiBzdHJva2Utd2lkdGg9IjgiIC8+PHBhdGggZD0iTTI5MCAyNTBWMjE1IiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC42KSIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJNMjkwIDI1MEwzMjAgMjcwIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC42KSIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48IS0tIFdhdmUgR3JhcGggLS0+PHBhdGggZD0iTTEyMCAzNTBDMTUwIDM1MCAxNjAgMzEwIDE5MCAzMTBDMjIwIDMxMCAyMzAgMzcwIDI2MCAzNzBDMjkwIDM3MCAzMDAgMzMwIDMzMCAzMzAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzcxZTJmMyIgc3Ryb2tlLXdpZHRoPSIxMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiAvPjwvc3ZnPg=='>
+    <link rel="apple-touch-icon" href='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImdyYWQxIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojM2IxNWU2O3N0b3Atb3BhY2l0eToxIiAvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzQzMzhjYTtzdG9wLW9wYWNpdHk6MSIgLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48Y2lyY2xlIGN4PSIyNTYiIGN5PSIyNTYiIHI9IjI1NiIgZmlsbD0idXJsKCNncmFkMSkiIC8+PCEtLSBNb29uIC0tPjxwYXRoIGQ9Ik0zNjAgMjU2YzAgODguMzctNzEuNjMgMTYwLTE2MCAxNjAtNDcuNDMgMC05MC4wNS0yMC44LTEyMC4yNC01My44QzEwNC4zNCAzOTYuMjUgMTM2LjA2IDQxNiAxNzIgNDE2YzQ5LjcxIDAgOTAtNDAuMjkgOTAtOTBzLTQwLjI5LTkwLTkwLTkwYy0zNS45NCAwLTY3LjY2IDE5Ljc1LTg0LjI0IDQ5LjhDMTIwLjIxIDE0Mi4xIDE2MS41NCAxMTIgMjA4IDExMmM4OC4zNyAwIDE1MiA2NC40NyAxNTIgMTQ0eiIgZmlsbD0iI2ZmZiIvPjwhLS0gQ2xvY2sgRmFjZSBIaW50IC0tPjxjaXJjbGUgY3g9IjI5MCIgY3k9IjI1MCIgcj0iNjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjMpIiBzdHJva2Utd2lkdGg9IjgiIC8+PHBhdGggZD0iTTI5MCAyNTBWMjE1IiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC42KSIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJNMjkwIDI1MEwzMjAgMjcwIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC42KSIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48IS0tIFdhdmUgR3JhcGggLS0+PHBhdGggZD0iTTEyMCAzNTBDMTUwIDM1MCAxNjAgMzEwIDE5MCAzMTBDMjIwIDMxMCAyMzAgMzcwIDI2MCAzNzBDMjkwIDM3MCAzMDAgMzMwIDMzMCAzMzAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzcxZTJmMyIgc3Ryb2tlLXdpZHRoPSIxMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiAvPjwvc3ZnPg=='>
+
     <!-- Web App Manifest -->
     <link rel="manifest" href='data:application/manifest+json,{"name": "SleepCycle Mate", "short_name": "SleepCycle", "start_url": ".", "display": "standalone", "background_color": "#0f172a", "theme_color": "#0f172a", "icons": [{"src": "https://cdn-icons-png.flaticon.com/512/1823/1823324.png", "sizes": "512x512", "type": "image/png"}]}'>
 
@@ -43,17 +44,11 @@
         .smooth-transition {
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        .fade-enter {
-            opacity: 0;
-            transform: translateY(10px) scale(0.98);
-        }
-        .fade-enter-active {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
         
+        .transition-height {
+            transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         /* Glassmorphism Refined */
         .glass-panel {
             background: rgba(30, 41, 59, 0.4);
@@ -63,7 +58,7 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
-        /* Animated Blob tweaks for smoother breathing */
+        /* Animated Blob tweaks */
         @keyframes blob-float {
             0% { transform: translate(0px, 0px) scale(1); }
             33% { transform: translate(30px, -50px) scale(1.1); }
@@ -76,7 +71,7 @@
         .animation-delay-2000 { animation-delay: 2s; }
         .animation-delay-4000 { animation-delay: 4s; }
 
-        /* Custom Input styling to remove default clock icon in some browsers */
+        /* Custom Input styling to remove default clock icon & style properly */
         input[type="time"]::-webkit-calendar-picker-indicator {
             filter: invert(1);
             cursor: pointer;
@@ -85,6 +80,10 @@
         }
         input[type="time"]::-webkit-calendar-picker-indicator:hover {
             opacity: 1;
+        }
+        /* Remove default clear button on some browsers to prevent overlap */
+        input[type="time"]::-webkit-clear-button {
+            display: none;
         }
     </style>
 </head>
@@ -129,7 +128,8 @@
             const [results, setResults] = useState([]);
             const [view, setView] = useState('input'); // 'input' or 'results'
             const [isOffline, setIsOffline] = useState(!navigator.onLine);
-            const [animateKey, setAnimateKey] = useState(0); // To trigger re-animations
+            const [animateKey, setAnimateKey] = useState(0); 
+            const containerRef = useRef(null);
 
             useEffect(() => {
                 const handleOnlineStatus = () => setIsOffline(!navigator.onLine);
@@ -212,10 +212,10 @@
                     </div>
 
                     {/* Main Card */}
-                    <div className="z-10 w-full max-w-md glass-panel rounded-[2rem] p-6 sm:p-8 smooth-transition relative">
+                    <div className="z-10 w-full max-w-md glass-panel rounded-[2rem] p-6 sm:p-8 smooth-transition relative flex flex-col items-center">
                         
                         {/* Header - Always visible but adaptable */}
-                        <div className={`text-center smooth-transition ${view === 'results' ? 'mb-6 scale-90 origin-top' : 'mb-10 scale-100'}`}>
+                        <div className={`text-center smooth-transition w-full ${view === 'results' ? 'mb-4 scale-90 origin-top' : 'mb-8 scale-100'}`}>
                             <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-200 to-purple-200 bg-clip-text text-transparent flex items-center justify-center gap-3">
                                 <MoonIcon className="text-indigo-300 drop-shadow-lg" /> 
                                 <span className="tracking-tight">SleepCycle</span>
@@ -227,28 +227,29 @@
                             </div>
                         </div>
 
-                        {/* Content Switcher */}
-                        <div className="relative overflow-hidden min-h-[300px]">
+                        {/* Content Switcher Container */}
+                        {/* Fix: Removed 'absolute inset-0' on children to allow container to grow naturally */}
+                        <div className="w-full relative transition-height duration-500 ease-in-out">
                             
                             {/* Input View */}
-                            <div className={`absolute inset-0 w-full transition-all duration-500 ease-in-out transform 
-                                ${view === 'input' ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-full pointer-events-none'}`}>
+                            <div className={`w-full transition-all duration-500 ease-in-out transform origin-top
+                                ${view === 'input' ? 'relative opacity-100 translate-x-0 scale-100' : 'absolute top-0 left-0 opacity-0 -translate-x-full pointer-events-none scale-95'}`}>
                                 
                                 {/* Toggle Tabs */}
                                 <div className="grid grid-cols-2 gap-2 bg-slate-900/40 p-1.5 rounded-2xl mb-8 border border-slate-700/30">
                                     <button 
                                         onClick={() => setMode('wakeup')}
-                                        className={`py-3 px-4 rounded-xl text-sm font-medium smooth-transition flex items-center justify-center gap-2
+                                        className={`py-3 px-2 sm:px-4 rounded-xl text-sm font-medium smooth-transition flex items-center justify-center gap-2
                                             ${mode === 'wakeup' ? 'bg-indigo-600/90 text-white shadow-lg shadow-indigo-500/20' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/30'}`}
                                     >
-                                        <ClockIcon size={18} /> จะตื่นกี่โมง
+                                        <ClockIcon size={18} className="shrink-0" /> <span className="truncate">จะตื่นกี่โมง</span>
                                     </button>
                                     <button 
                                         onClick={() => { setMode('bedtime'); setInputTime(formatTime(new Date())); }}
-                                        className={`py-3 px-4 rounded-xl text-sm font-medium smooth-transition flex items-center justify-center gap-2
+                                        className={`py-3 px-2 sm:px-4 rounded-xl text-sm font-medium smooth-transition flex items-center justify-center gap-2
                                             ${mode === 'bedtime' ? 'bg-indigo-600/90 text-white shadow-lg shadow-indigo-500/20' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/30'}`}
                                     >
-                                        <BedIcon size={18} /> จะนอนตอนนี้
+                                        <BedIcon size={18} className="shrink-0" /> <span className="truncate">จะนอนตอนนี้</span>
                                     </button>
                                 </div>
 
@@ -257,22 +258,23 @@
                                     <label className="block text-slate-400 text-sm mb-4 font-light tracking-wide">
                                         {mode === 'wakeup' ? 'ตั้งเวลาที่ต้องการตื่น' : 'เวลาที่จะเริ่มเข้านอน'}
                                     </label>
-                                    <div className="relative inline-block group">
+                                    <div className="relative inline-block group w-full">
+                                        {/* Input Sizing Fix: Reduced size on mobile (text-5xl) and ensured width constraint */}
                                         <input 
                                             type="time" 
                                             value={inputTime}
                                             onChange={(e) => setInputTime(e.target.value)}
-                                            className="bg-transparent text-6xl font-bold text-slate-100 text-center border-none outline-none w-full font-mono relative z-10 focus:scale-105 smooth-transition drop-shadow-2xl"
+                                            className="bg-transparent text-5xl sm:text-6xl font-bold text-slate-100 text-center border-none outline-none w-full font-mono relative z-10 focus:scale-105 smooth-transition drop-shadow-2xl appearance-none p-0"
                                         />
                                         {/* Underline decorative */}
-                                        <div className="h-1 w-2/3 mx-auto bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-50 group-hover:opacity-100 smooth-transition mt-2 rounded-full"></div>
+                                        <div className="h-1 w-1/2 mx-auto bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-50 group-hover:opacity-100 smooth-transition mt-2 rounded-full"></div>
                                     </div>
                                 </div>
 
                                 {/* Main Action Button */}
                                 <button 
                                     onClick={calculateTimes}
-                                    className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold py-4 rounded-2xl shadow-lg shadow-indigo-500/20 transform active:scale-95 smooth-transition flex items-center justify-center gap-2 text-lg group"
+                                    className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold py-4 rounded-2xl shadow-lg shadow-indigo-500/20 transform active:scale-95 smooth-transition flex items-center justify-center gap-2 text-lg group mt-4"
                                 >
                                     <span>คำนวณเวลา</span>
                                     <span className="group-hover:translate-x-1 transition-transform">→</span>
@@ -286,8 +288,8 @@
                             </div>
 
                             {/* Results View */}
-                            <div className={`absolute inset-0 w-full transition-all duration-500 ease-in-out transform 
-                                ${view === 'results' ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'}`}>
+                            <div className={`w-full transition-all duration-500 ease-in-out transform origin-top
+                                ${view === 'results' ? 'relative opacity-100 translate-x-0 scale-100' : 'absolute top-0 left-0 opacity-0 translate-x-full pointer-events-none scale-95'}`}>
                                 
                                 <div className="text-center mb-6">
                                     <p className="text-slate-300 text-sm font-light">
@@ -295,11 +297,10 @@
                                     </p>
                                 </div>
 
-                                <div className="space-y-3 max-h-[320px] overflow-y-auto no-scrollbar pb-2 px-1">
+                                <div className="space-y-3 max-h-[40vh] overflow-y-auto no-scrollbar pb-2 px-1">
                                     {results.map((item, index) => {
                                         const isBest = item.cycles === 5 || item.cycles === 6;
                                         const isGood = item.cycles === 4;
-                                        // Staggered animation delay based on index
                                         const delayStyle = { transitionDelay: `${index * 50}ms` };
                                         
                                         return (
@@ -334,7 +335,7 @@
 
                                 <button 
                                     onClick={reset}
-                                    className="absolute bottom-0 left-0 right-0 w-full mt-4 bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium py-3 rounded-xl smooth-transition flex items-center justify-center gap-2 group border border-slate-700"
+                                    className="w-full mt-6 bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium py-3 rounded-xl smooth-transition flex items-center justify-center gap-2 group border border-slate-700"
                                 >
                                     <ChevronLeft className="group-hover:-translate-x-1 transition-transform" size={18} />
                                     <span>คำนวณใหม่</span>
